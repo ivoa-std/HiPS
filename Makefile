@@ -23,7 +23,7 @@ SOURCES = $(DOCNAME).tex gitmeta.tex role_diagram.pdf
 
 # List of image files to be included in submitted package (anything that
 # can be rendered directly by common web browsers)
-FIGURES = role_diagram.pdf
+FIGURES = 
 
 # List of PDF figures (figures that must be converted to pixel images to
 # work in web browsers).
