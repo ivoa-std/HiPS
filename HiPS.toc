@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Role within the VO Architecture}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {A}Changes from Previous Versions}{2}{appendix.A}%
+\contentsline {section}{References}{3}{section*.5}%
