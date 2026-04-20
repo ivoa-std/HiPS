@@ -7,7 +7,7 @@
 name: Update PDF Preview
 
 env:
-  doc_name   : HiPS
+  doc_name   :
   branch_name: ${{ github.head_ref || github.ref_name }}
   tag_preview: auto-pdf-preview
 

@@ -23,7 +23,7 @@ SOURCES = $(DOCNAME).tex gitmeta.tex
 
 # List of image files to be included in submitted package (anything that
 # can be rendered directly by common web browsers)
-FIGURES = 
+FIGURES =
 
 # List of PDF figures (figures that must be converted to pixel images to
 # work in web browsers).
