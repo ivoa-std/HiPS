@@ -1,4 +1,68 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Role within the VO Architecture}{2}{subsection.1.1}%
-\contentsline {section}{\numberline {A}Changes from Previous Versions}{2}{appendix.A}%
-\contentsline {section}{References}{3}{section*.5}%
+\contentsline {section}{List of Figures}{4}{section*.2}%
+\contentsline {section}{List of Tables}{4}{section*.3}%
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Role within the VO Architecture}{7}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Usage examples}{7}{section.2}%
+\contentsline {section}{\numberline {3}HiPS principle}{8}{section.3}%
+\contentsline {section}{\numberline {4}HiPS encoding}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Spatial data}{12}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Directory structure}{12}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Tile formats}{14}{subsubsection.4.1.2}%
+\contentsline {paragraph}{HiPS image tile}{15}{section*.17}%
+\contentsline {paragraph}{Deepest HiPS order}{16}{section*.19}%
+\contentsline {paragraph}{Other HiPS orders}{17}{section*.21}%
+\contentsline {subparagraph}{Format of image tiles}{17}{section*.22}%
+\contentsline {paragraph}{HiPS catalog tile}{18}{section*.24}%
+\contentsline {subparagraph}{Format of catalog tiles}{19}{section*.25}%
+\contentsline {subsection}{\numberline {4.2}Cubic data}{20}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Discretization of the additional axis}{23}{subsubsection.4.2.1}%
+\contentsline {paragraph}{Temporal discretization}{23}{section*.30}%
+\contentsline {paragraph}{Frequency discretization}{24}{section*.31}%
+\contentsline {subsubsection}{\numberline {4.2.2}HiPS cube tile and directory structure}{25}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Cubic tile formats}{27}{subsubsection.4.2.3}%
+\contentsline {paragraph}{Full dynamic tiles}{27}{section*.33}%
+\contentsline {paragraph}{Compressed tiles}{27}{section*.34}%
+\contentsline {subsection}{\numberline {4.3}HiPS "enablers"}{27}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}WCS solution for FITS tiles}{28}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Trim reduction for FITS tiles}{28}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}"Allsky" file}{29}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}HiPS metadata}{30}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}The properties file}{31}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}The Moc.fits file}{36}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}The metadata file}{36}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}The preview.jpg file}{37}{subsubsection.4.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.5}The index.html file}{37}{subsubsection.4.4.5}%
+\contentsline {section}{\numberline {5}HiPS distribution and registration}{38}{section.5}%
+\contentsline {subsection}{\numberline {5.1}HiPS node}{38}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}HiPS list}{39}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}HiPS registration}{40}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}HiPS node registration}{40}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Individual HiPS survey declarations}{41}{subsubsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.4}HiPS mirroring}{42}{subsection.5.4}%
+\contentsline {section}{\numberline {6}HiPS access and use}{43}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Local access}{43}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Remote access}{44}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Suggested display algorithms}{45}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Algorithm for drawing HiPS image}{45}{subsubsection.6.3.1}%
+\contentsline {subparagraph}{Basis of the algorithm}{45}{section*.41}%
+\contentsline {subparagraph}{Allsky usage improvement}{45}{section*.42}%
+\contentsline {subparagraph}{Moc.fits usage improvement}{46}{section*.43}%
+\contentsline {subsubsection}{\numberline {6.3.2}Algorithm for drawing HiPS catalog}{46}{subsubsection.6.3.2}%
+\contentsline {subparagraph}{Basis of the algorithm}{46}{section*.45}%
+\contentsline {subparagraph}{Allsky usage improvement}{47}{section*.46}%
+\contentsline {subparagraph}{Moc.fits usage improvement}{47}{section*.47}%
+\contentsline {subparagraph}{metadata.xml usage improvement}{47}{section*.48}%
+\contentsline {subsubsection}{\numberline {6.3.3}Algorithm for drawing HiPS cube}{47}{subsubsection.6.3.3}%
+\contentsline {subparagraph}{Basis of the algorithm for the spatial component}{47}{section*.50}%
+\contentsline {subparagraph}{Basis of the algorithm for the frequency component}{48}{section*.51}%
+\contentsline {subparagraph}{Moc.fits usage improvement}{49}{section*.52}%
+\contentsline {subparagraph}{A few basic improvements}{49}{section*.53}%
+\contentsline {section}{\numberline {7}Conclusion and perspectives}{49}{section.7}%
+\contentsline {section}{References}{50}{section*.54}%
+\contentsline {section}{\numberline {A}Basic rules and formulae useful for HiPS manipulations.}{51}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Spatial case}{52}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Cubic case}{53}{subsection.A.2}%
+\contentsline {section}{\numberline {B}Generic HiPS cube extension}{54}{appendix.B}%
+\contentsline {paragraph}{Linear discretisation:}{54}{section*.55}%
+\contentsline {paragraph}{Logarithmic discretisation}{54}{section*.56}%
+\contentsline {section}{\numberline {C}Version History}{55}{appendix.C}%
