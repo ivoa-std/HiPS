@@ -909,9 +909,9 @@ There are 10 mandatory keywords which must be specified:
 \item {\bf hips\_release\_date}: HiPS release date – Format: ISO 8601 (YYYY-mm-ddTHH:MMZ)
 \item {\bf hips\_status}: HiPS status description – Format: list of blank separated words ("private" or "public"), ("master", "mirror", or "partial"), ("clonable", "unclonable" or "clonableOnce"\footnote{"clonableOnce" implies that the copy is allowed, but only from the "master" site} ) – Default : public master clonableOnce
 \item {\bf hips\_tile\_format}: Tile formats – Format: list of different HIPS tiles format supported by the survey, space separated (one or many of "fits", "jpeg", "png" for image/HiPS cube and "tsv" for HiPS catalog)
-%\item {\bf hip\_order:} Deepest HiPS order(s) – Format: integer (suffixed by \_integer in case of HiPS cube)
-\item {\bf hip\_order:} Deepest spatial HiPS order – Format: integer
-\item {\bf hip\_tile\_width:} Tile width in pixels – Format: integer
+%\item {\bf hips\_order:} Deepest HiPS order(s) – Format: integer (suffixed by \_integer in case of HiPS cube)
+\item {\bf hips\_order:} Deepest spatial HiPS order – Format: integer
+\item {\bf hips\_tile\_width:} Tile width in pixels – Format: integer
 \item {\bf hips\_frame:} Coordinate frame reference – Format: "equatorial" (ICRS), "galactic", "ecliptic", plus body frame (planeto HiPS) according to the used HiPS coordinate reference.
 \end{enumerate}
 
@@ -919,10 +919,10 @@ There are 10 mandatory keywords which must be specified:
 There are 5 additional mandatory keywords specific to the type of HiPS, and they must be specified in the following cases:
 \begin{enumerate}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
 \item {\bf dataproduct\_subtype:} Subtype of data – Format: word "color", "live" respectively for HiPS image colored (based on colored tiles), and live HiPS (HiPS for which the content may evolve – for instance live databases like Simbad, or observation missions still in progress)
-\item {\bf hip\_order\_axis2:} Dedicated to HiPS cubes, deepest HiPS order for the additional dimension – Format: integer
-\item {\bf hip\_tile\_depth:} Dedicated to HiPS cubes, tile depth – Format: integer
+\item {\bf hips\_order\_axis2:} Dedicated to HiPS cubes, deepest HiPS order for the additional dimension – Format: integer
+\item {\bf hips\_tile\_depth:} Dedicated to HiPS cubes, tile depth – Format: integer
 \item {\bf hips\_order\_hierarchy:}  Explicit list of provided orders in case of divergence with the default recommendation – Format: integer[\_integer] integer[\_integer] ... 
-\item {\bf hips\_body:}  Name of the body (dedicated to planetary HiPS – Format: lowercase word  "mercury", "venus", "earth", "mars", "saturn", "jupiter","uranus", "neptun", "pluto", "sun", "moon", "titan", "io", etc.
+\item {\bf hips\_body:}  Name of the body (dedicated to planetary HiPS – Format: lowercase word  "mercury", "venus", "earth", "mars", "saturn", "jupiter","uranus", "neptune", "pluto", "sun", "moon", "titan", "io", etc.
 \end{enumerate}
 
 \medskip
