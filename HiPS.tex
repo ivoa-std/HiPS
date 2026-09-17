@@ -14,7 +14,6 @@
 \title{HiPS -- Hierarchical Progressive Survey}
 \ivoagroup{Applications}
 
-\author{{\em ToBeCompletedAndConfirmed:}}
 \author{Pierre Fernique (CDS)}
 \author{Mark Allen(CDS)}
 \author{Deborah Baines (ESA)}
@@ -476,7 +475,7 @@ As HiPS cube takes two physical dimensions into account simultaneously, it is te
 \label{fig:fig27}
 \end{figure}
 
-At a minimum, this document recommendes to generate the combination of orders that simultaneously degrade the spatial dimension and the additional dimension represented in color green in the figure \ref{fig:fig27}. Thus, a HiPS cube requiring a spatial order N and an order M for the additional dimension at the best resolution must provide tiles of lower resolution of orders (N-1,M-1), (N-2,M-2), ... up to order 0 for the lower dimension. This minimum recommendation ensures a perfectly satisfactory progressive visualization experience by adding only 14\% of the HiPS volume (8 child cubic pixels for 1 parent cubic pixel) for the lower resolution tiles.
+At a minimum, this document recommendes to generate the combination of orders that simultaneously degrade the spatial dimension and the additional dimension represented in color green in the figure \ref{fig:fig27}. Thus, a HiPS cube requiring a spatial order K and an order L for the additional dimension at the best resolution must provide tiles of lower resolution of orders (K-1,L-1), (K-2,L-2), ... up to order 0 for the lower dimension. This minimum recommendation ensures a perfectly satisfactory progressive visualization experience by adding only 14\% of the HiPS volume (8 child cubic pixels for 1 parent cubic pixel) for the lower resolution tiles.
 
 When the respective resolutions in the two physical dimensions are asymmetrical in terms of the deepest order values, it is recommended to add the missing {\bf spatial} orders up to 0, and it may be desirable to do the same in the symmetrical case, but only up to an order that allows the entire coverage to be visualized (not necessary 0). Figure  \ref{fig:fig21} shows the recommended order combinations in dark green and additional desirable combinations in light green. 
 
@@ -488,7 +487,7 @@ When the respective resolutions in the two physical dimensions are asymmetrical 
 \label{fig:fig21}
 \end{figure}
 
-{\em For example, for a spatio-temporal cubic survey requiring a spatial resolution of 12 arcseconds and a temporal resolution of 24 hours, the deepest order tiles will be 5 for the spatial dimension (see  Table \ref{tab:tabOrder}) and 24 for the temporal dimension (see Table \ref{tab:tabOrderTime}). The lowest resolution tiles calculated by default will be (4,23), (3,22), (2,21), (1,20), and (0,19). The HiPS author is free to add any other combinations to this default, for example to continue reducing the temporal orders while maintaining the minimum spatial resolution, such as (0,18), (0,17), and (0,16).}
+{\em For example, for a spatio-temporal cubic survey requiring a spatial resolution of 12 arcseconds and a temporal resolution of 24 hours, the deepest order tiles will be 5 for the spatial dimension (see  Table \ref{tab:tabOrder}) and 21 for the temporal dimension (see Table \ref{tab:tabOrderTime}). The lowest resolution tiles calculated by default will be (4,23), (3,22), (2,21), (1,20), and (0,19). The HiPS author is free to add any other combinations to this default, for example to continue reducing the temporal orders while maintaining the minimum spatial resolution, such as (0,18), (0,17), and (0,16).}
 
 
 \subsubsection{Discretization of the additional axis}
@@ -602,7 +601,7 @@ In practical term, the appropriate deepest  ${\textit order}$ required to map a 
 \parbox{0.98\linewidth}{%
 \centering
 \[
-\textit{orderF}
+\textit{orderT}
 \approx
 61
 -
@@ -695,7 +694,7 @@ In practical term, the appropriate ${\textit order}$ required to map a $ {\Delta
 \parbox{0.98\linewidth}{%
 \centering
 \[
-\textit{orderF} \approx \log_2 \left( \frac{56 \cdot \textit{freq}}{\Delta f_\text{target}} \right)
+\textit{orderF} \approx \log_2 \left( \frac{56 \cdot \log_{10}(freq)}{\Delta f_\text{target}} \right)
 \]
 }}
 \medskip
@@ -717,7 +716,7 @@ The structure of a HiPS cube reused the directories and subdirectories hierarchy
 \noindent\fbox{%
 \parbox{0.98\linewidth}{%
 \begin{center}
-Tile N/ K\_M/L
+Tile K/N\_L/M
  $\rightarrow$ \texttt{…/NorderK\_L/DirD\_E/NpixN\_M\{.ext\}}
 \end{center}
 where K is the spatial order, L the additional dimension order, \\
@@ -736,7 +735,7 @@ and \texttt{\{.ext\}} depends on the nature of the survey (see ``tile format'' b
 \label{fig:fig15}
 \end{figure}
 
-This method allows any combination "NorderX\_Y" to be taken into account corresponding to a spatial resolution versus a resolution of the additional axis (time or frequency).
+This method allows any combination "NorderK\_L" to be taken into account corresponding to a spatial resolution versus a resolution of the additional axis (time or frequency).
 
 \subsubsection{Cubic tile formats}
 
@@ -901,7 +900,7 @@ obs_restfreq         = 1.420405751E9
 
 \medskip
 
-There are 9 mandatory keywords which must be specified:
+There are 10 mandatory keywords which must be specified:
 \begin{enumerate}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
 \item {\bf creator\_did:}  Unique identifier of the HiPS – Format: IVOID \citep{2016ivoa.spec.0523D} – e.g.: ivo://CDS/P/2MASS/J
 \item {\bf obs\_title}: Data set title – Format: free text, but should be short (no more than one line) – e.g.: HST 110W
@@ -912,14 +911,16 @@ There are 9 mandatory keywords which must be specified:
 \item {\bf hips\_tile\_format}: Tile formats – Format: list of different HIPS tiles format supported by the survey, space separated (one or many of "fits", "jpeg", "png" for image/HiPS cube and "tsv" for HiPS catalog)
 %\item {\bf hip\_order:} Deepest HiPS order(s) – Format: integer (suffixed by \_integer in case of HiPS cube)
 \item {\bf hip\_order:} Deepest spatial HiPS order – Format: integer
+\item {\bf hip\_tile\_width:} Tile width in pixels – Format: integer
 \item {\bf hips\_frame:} Coordinate frame reference – Format: "equatorial" (ICRS), "galactic", "ecliptic", plus body frame (planeto HiPS) according to the used HiPS coordinate reference.
 \end{enumerate}
 
 \medskip
-There are 4 additional mandatory keywords specific to the type of HiPS, and they must be specified in the following cases:
+There are 5 additional mandatory keywords specific to the type of HiPS, and they must be specified in the following cases:
 \begin{enumerate}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
 \item {\bf dataproduct\_subtype:} Subtype of data – Format: word "color", "live" respectively for HiPS image colored (based on colored tiles), and live HiPS (HiPS for which the content may evolve – for instance live databases like Simbad, or observation missions still in progress)
 \item {\bf hip\_order\_axis2:} Dedicated to HiPS cubes, deepest HiPS order for the additional dimension – Format: integer
+\item {\bf hip\_tile\_depth:} Dedicated to HiPS cubes, tile depth – Format: integer
 \item {\bf hips\_order\_hierarchy:}  Explicit list of provided orders in case of divergence with the default recommendation – Format: integer[\_integer] integer[\_integer] ... 
 \item {\bf hips\_body:}  Name of the body (dedicated to planetary HiPS – Format: lowercase word  "mercury", "venus", "earth", "mars", "saturn", "jupiter","uranus", "neptun", "pluto", "sun", "moon", "titan", "io", etc.
 \end{enumerate}
@@ -994,7 +995,7 @@ bib\_reference\_url & *  & URL to bibliographic reference \\ \hline
 obs\_copyright &   & Copyright mention associated to the original data\\ & & – Format: free text \\ \hline
 obs\_copyright\_url &   & URL to a copyright mention \\ \hline
 hips\_copyright &  & Copyright mention associated to the HiPS\\ & & – Format: free text \\ \hline
-hips\_licence & [S] & HiPS licence – Format: machine readable licence mention\\ 
+hips\_license & [S] & HiPS license – Format: machine readable license mention\\ 
  & &  or free text if not applicable – Ex: CC-by-sa\\ \hline
 hips\_doi &   & HiPS DOI – Format: DOI syntax\\ 
  & &   – Ex: 10.26093/cds/aladin/pg0c-rj\\ \hline
@@ -1029,7 +1030,7 @@ t\_max & S & Stop time of the observations – Format: real \\ & & – Represent
 em\_min & S & Start in spectral coordinates – Format: real \\ & & – Unit: meters \\ \hline
 em\_max & S & Stop in spectral coordinates – Format: real \\ & & – Unit: meters \\ \hline
 client\_category &   & '/' separated keywords suggesting a display \\ & & hierarchy to the client – Ex : Image/InfraRed \\ \hline
-client\_link & *  & ID of related HiPS  - Format: IVOID\\ & & - Ex: ivo:CDS/P/Simbad\_density\_map \\ \hline
+client\_link & *  & ID of related HiPS  - Format: IVOID\\ & & - Ex: ivo://CDS/P/Simbad\_density\_map \\ \hline
 %client\_sort\_key &   & Sort key suggesting a display order to\\ & & the client inside a "client\_category"\\
 % & & – Format: free text – Sort : alphanumeric \\ \hline
 %addendum\_did & *  & In case of "live" HiPS, creator\_did of the added HiPS \\ \hline
@@ -1104,17 +1105,17 @@ Each record of the HiPS list must provide at least these four mandatory properti
 
 \begin{tcolorbox}[title=Example of a HiPS list]
 \begin{verbatim}
-# Hipslist of http://alasky.cds.unistra.fr HiPS node
+# Hipslist of https://alasky.cds.unistra.fr HiPS node
 creator_did          = ivo://CADC/P/HST/F850LP/r3
 hips_release_date    = 2014-10-14T12:00Z
-hips_service_url     = http://alasky.cds.unistra.fr/F850LP
+hips_service_url     = https://alasky.cds.unistra.fr/F850LP
 hips_status          = public master clonable
 
 creator_did          = ivo://CDS/P/2MASS/H
 hips_release_date    = 2014-11-03T12:00Z
-hips_service_url     = http://alasky.cds.unistra.fr/2MASS/H
+hips_service_url     = https://alasky.cds.unistra.fr/2MASS/H
 hips_status          = public mirror unclonable
-hips_estsize         = 1610612736IDs2007
+hips_estsize         = 1610612736
 hips_order           = 9
 hips_tile_format     = fits jpeg
 dataproduct_type     = image
@@ -1173,14 +1174,14 @@ A HiPS node may be registered in the IVOA registry by using an IVOA XML record d
        <subject>CDS Hierarchical Progressive Surveys</subject>
        <description>The CDS provides a collection of reference
           surveys available thanks to HiPS protocol...</description>
-       <referenceURL>http://aladin.cds.unistra.fr/hips</referenceURL>
+       <referenceURL>https://aladin.cds.unistra.fr/hips</referenceURL>
        <type>Archive</type>
        <contentLevel>Research</contentLevel>
    </content>
    <capability standardID="ivo://ivoa.net/std/hips#hipslist-1.0">
       <interface role="std" xsi:type="vs:ParamHTTP">
         <accessURL use="full" >
-           http://alasky.cds.unistra.fr/hipslist</accessURL>
+           https://alasky.cds.unistra.fr/hipslist</accessURL>
       </interface>
    </capability>
 </ri:Resource>
@@ -1215,19 +1216,19 @@ Optionally, each HiPS may be registered individually in the IVOA registry. There
    <content>
      <subject>ALADIN image DSS2 blue survey collection</subject>
      <description> ALADIN image server provides reference ... </description>
-     <referenceURL>http://aladin.cds.unistra.fr</referenceURL>
+     <referenceURL>https://aladin.cds.unistra.fr</referenceURL>
      <type>Survey</type>
      <contentLevel>Research</contentLevel>
    </content>
    <capability standardID="ivo://ivoa.net/std/hips#hips-2.0">
      <interface role="std" xsi:type="vs:ParamHTTP">
        <accessURL use="base">
-          http://alasky.cds.unistra.fr/DSS/DSS2-blue-XJ-S</accessURL>
+          https://alasky.cds.unistra.fr/DSS/DSS2-blue-XJ-S</accessURL>
      </interface>
    </capability>
    <coverage>
       <footprint ivo-id="ivo://mocivod">
-         http://alaskycds.unistra.fr/DSS/DSS2-blue-XJ-S/Moc.fits
+         https://alasky.cds.unistra.fr/DSS/DSS2-blue-XJ-S/Moc.fits
       </footprint>
    </coverage>
  </ri:Resource>
@@ -1236,7 +1237,7 @@ Optionally, each HiPS may be registered individually in the IVOA registry. There
 
 \subsection{HiPS mirroring}
 
-HiPS surveys are governed by usual data rights policies. The data may be public or private. It may be mirrored or not, according to the original data rights rules set by the HiPS creator (see hips\_licence propertie keyword)  .
+HiPS surveys are governed by usual data rights policies. The data may be public or private. It may be mirrored or not, according to the original data rights rules set by the HiPS creator (see hips\_license propertie keyword)  .
 If both the original data copyright statement and the HiPS creator authorize the duplication and the distribution of any derived HiPS products, it could be interesting to mirror HiPS in order to provide faster and more secure access.
 Any HiPS node – having full copy and distribution rights - may mirror a HiPS survey from other HiPS node on condition that the HiPS survey is described by the HiPS node list, and with the explicit property "hips\_status = … clonable … ".
 A HiPS node which provides a copy of a HiPS survey must specify "hips\_status = … mirror ..." for the clone. If the "hips\_status" was originally "… clonableOnce …" it must replace it by "… unclonable …" to avoid a new copy from this mirror. If the mirroring is partial (lower hips\_order, or only a subset of tile formats), the server who has done the mirroring must specify "hips\_status = … partial …", and adjust the relevant properties accordingly (hips\_service\_url, hips\_order, hips\_tile\_format), in its HiPS list and in the "properties" file of the concerned HiPS.
@@ -1275,7 +1276,7 @@ Most of the HiPS clients use remote access through the Internet. In this mode, t
 
 \begin{itemize}
 \item properties file $\rightarrow$ {\em baseURL}/properties
-\item Tiles $\rightarrow$ {\em baseURL}/NorderK/DirD/NpixN\{.ex\}
+\item Tiles $\rightarrow$ {\em baseURL}/NorderK/DirD/NpixN\{.ext\}
 where K  is the order, N tile index, D=(N//10000)*10000,
 \{.ext\} is .fits, .jpg, .png, …
 \item MOC file $\rightarrow$ {\em baseURL}/Moc.fits
@@ -1458,10 +1459,10 @@ HiPS size order K $\rightarrow$ ~ 0.125x HiPS size order K+1
 \item Time dimension discretization\\
 Time index at order 61 $\rightarrow$ JD expressed in microseconds
 \item Frequency dimension discretization\\
-Freq index at order 51  $\rightarrow$  $  \left\lfloor ( \log_{10}(\textit{freq}) + 18 )/ {56} ) \times 2^{52}   \right\rfloor $
+Freq index at order 51  $\rightarrow$  $  \left\lfloor ( \log_{10}(\textit{freq}) + 18 )/ {56} \right\rfloor \times 2^{52} $
 \item Parent of the tile (frequency case, same for temporal)\\
 Tile N in order K (space), M in order L (frequency),\\
-$\rightarrow$ Space direct parent order K-1: tile N/4\\
+$\rightarrow$ Space direct parent order K-1: tile N//4\\
 $\rightarrow$ Frequency direct parent order L-1: tile M//2
 \item 8 children of the tile (frequency case, same for temporal)\\
 Tile N in order K (space), M in order L (frequency),\\
@@ -1470,7 +1471,7 @@ $\rightarrow$ Frequency children order $L+1: tiles M \times 2, M \times 2+1$
 
 %\item Suggested time WCS keywords values for the tile of indice M in order L, for a depth = $2^{orderInTile}$:\\
 %   CTYPE3 = 'TIME'\\
-%   TIMESYS = 'TDB'\\
+%   TIMESYS = 'TCB'\\
 %   JDREF = $ ( M * 2^{orderInTile} ) / 86400 $\\
 %   CUNIT3 = 's'\\
 %   CRPIX3 = 1\\
@@ -1480,7 +1481,7 @@ $\rightarrow$ Frequency children order $L+1: tiles M \times 2, M \times 2+1$
 \item Suggested time WCS keywords values for the tile of indice M in order L, for a depth equals to $2^{orderInTile}$:\\
 {\ttfamily
 CTYPE3   = 'TIME'\\
-TIMESYS = 'TDB'\\
+TIMESYS = 'TCB'\\
 JDREFI    = $(M \times 2^{orderInTile}) // 86400$\\
 JDREFF   = $((M \times 2^{orderInTile}) \% 86400) / 86400$\\
 CUNIT3   = 's'\\
@@ -1502,7 +1503,7 @@ CD3\_3   = $1E-18 \times ( log(1E+38/1E-18) / 2^{(L+orderInTile)} )$
 \section{Generic HiPS cube extension}
 \label{sec:generic}
 
-This document provides a normative description of HiPS cubes for spatio-temporal or spatio-frequency data. This appendix proposes a possible, but non-standardized, extension to describe any collection of cubes if it is not possible to convert the additional dimension into Hertz or TDB reference microseconds. It should be noted, however, that such use will, by design, limit the usage, as it will not be easily comparable or combinable with another HiPS.
+This document provides a normative description of HiPS cubes for spatio-temporal or spatio-frequency data. This appendix proposes a possible, but non-standardized, extension to describe any collection of cubes if it is not possible to convert the additional dimension into Hertz or TCB reference microseconds. It should be noted, however, that such use will, by design, limit the usage, as it will not be easily comparable or combinable with another HiPS.
 
 The suggested method is to use the "properties" file to describe the parameters characterizing the discretization function used in the generic HiPS cube. We propose the keywords associated with the following formulas:
 
@@ -1512,7 +1513,7 @@ The original values must be expressed as integers between 0 and $2^{61}-1$ inclu
 
 \begin{tcolorbox}
 \begin{verbatim}
-data_product_type = generic-cube
+dataproduct_type  = generic-cube
 hips_ctype3       = axisType (string)
 hips_ref          = origin (number)
 hips_cunit3       = unit (string)
@@ -1533,11 +1534,11 @@ index = \lfloor (value - origin) / 2^{61-order} \rfloor
 
 \paragraph{Logarithmic discretisation}
 
-The original values must be expressed between 1.0E-18 and 1.0+38.
+The original values must be expressed between 1.0E-18 and 1.0E+38.
 
 \begin{tcolorbox}
 \begin{verbatim}
-data_product_type = generic-cube
+dataproduct_type  = generic-cube
 hips_ctype3       = axisType-log (string)
 hips_cunit3       = unit (string)
  \end{verbatim}
